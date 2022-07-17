@@ -1,0 +1,41 @@
+#Hangman Game
+#Currently working and semicomplete.  Needs bigger word bank and ascii art modules.
+
+#imports
+import random
+
+#select word
+word_bank = ["Hello","World"]
+current_word = random.choice(word_bank).lower()
+
+#create blanks and print
+letter_fill = []
+for letter in current_word:
+    letter_fill.append("_")
+print(letter_fill)
+
+guess_count = 6
+while  guess_count > 0 and "_" in letter_fill:
+    
+    #take guess
+    print(f"You have {guess_count} guesses remaining")
+    current_guess = input("Guess a letter for the hangman! ")
+    current_guess = current_guess.lower()
+    
+    
+    #fill in correct guesses
+    for i in range(0,len(current_word)):
+        if current_word[i] == current_guess:
+            letter_fill[i] = current_guess
+            
+    if current_guess not in current_word:
+        guess_count -=1
+        
+    print(letter_fill)
+    
+#Win or lose plus game over
+if guess_count ==0:
+    print("You lose")
+if "_" not in letter_fill:
+    print("You win")
+print("Game Over")
