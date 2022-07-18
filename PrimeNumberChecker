@@ -1,0 +1,12 @@
+num = input("Pick a number to be checked: ")
+num = int(num)
+count = 1
+result = "Prime"
+
+while count < num -1:
+    count += 1
+    if num % count == 0:
+        result = "Not Prime"
+        break;
+
+print(result)
