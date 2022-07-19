@@ -1,0 +1,38 @@
+# from caesar_art import logo
+# print(logo)
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+repeat = "yes"
+
+while repeat == "yes":
+
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+
+    if shift > 26:
+        shift = shift % 26
+    if shift < 0:
+        shift = (shift % 26) +26
+
+
+    def caesar(plain_text, shift_amount, direction_shift):
+        cipher_text = ""
+        for letter in plain_text:
+            if letter in alphabet:
+                letter_index = alphabet.index(letter)
+                if direction_shift == "encode":
+                    new_letter = alphabet[letter_index + shift_amount]
+                elif direction_shift == "decode":
+                    new_letter = alphabet[letter_index - shift_amount]
+                cipher_text += new_letter
+            else:
+                cipher_text += letter
+        print(cipher_text)
+
+    caesar(plain_text=text, shift_amount=shift, direction_shift=direction)
+    repeat = input("Would you like to cipher again? yes or no: ")
+print("Thank you for using Caesar Cipher!")
+
+
