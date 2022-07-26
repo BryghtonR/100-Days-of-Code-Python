@@ -150,4 +150,5 @@ while play_again == "y":
         print("Draw")
 
     #Go again?
-    deal_again = input("Would you like to play another hand? y/n: ")
+    play_again = input("Would you like to play another hand? y/n: ")
+print("Thankyou and have a great day!")
