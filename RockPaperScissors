@@ -1,0 +1,29 @@
+import random
+from tkinter import Y
+import os
+
+play_again = "yes"
+while play_again == "yes":
+    os.system('cls')
+    player_pick = input("Pick Rock, Paper, or Scissors: ")
+    r_p_s = ["Rock", "Paper", "Scissors"]
+    pc_pick = random.choice(r_p_s)
+
+    print(f"player pick: {player_pick}, pc pick: {pc_pick}")
+
+    if player_pick == pc_pick:
+        print("Tie")
+    elif player_pick == "Rock" and pc_pick == "Paper":
+        print("You lose")
+    elif player_pick == "Paper" and pc_pick == "Scissors":
+        print("You lose")
+    elif player_pick == "Scissors" and pc_pick == "Rock":
+        print("You lose")
+    elif player_pick == "Rock" and pc_pick == "Scissors":
+        print("You Win")
+    elif player_pick == "Scissors" and pc_pick == "Paper":
+        print("You Win")
+    elif player_pick == "Paper" and pc_pick == "Rock":
+        print("You Win")
+
+    play_again = input("Would you like to play again?: yes or no ")
