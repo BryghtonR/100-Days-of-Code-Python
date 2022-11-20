@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, shuffle, randint
+import json
 
 default_email = "YourEmail@email.com"
 astrics = "*"
@@ -20,12 +21,10 @@ def add():
     if len(entry_email.get()) == 0 or len(entry_website.get()) == 0 or len(entry_password.get()) == 0:
         messagebox.showinfo(title="", message="Please fill all boxes!")
     else:
-        is_ok = messagebox.askokcancel(title=entry_website.get(), message = f"Is this correct? \n {entry_website.get()} \n {entry_email.get()} \n {astrics * len(entry_password.get())}")
-        if is_ok:
-            with open(file="SavedPasswords.txt", mode="a") as new_file:
-                new_file.write(entry_website.get() + " | " + entry_email.get() + " | " + entry_password.get() + "\n")
-                entry_website.delete(0, END)
-                entry_password.delete(0, END)
+        with open(file="SavedPasswords.json", mode="w") as new_file:
+            new_file.write(entry_website.get() + " | " + entry_email.get() + " | " + entry_password.get() + "\n")
+            entry_website.delete(0, END)
+            entry_password.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
