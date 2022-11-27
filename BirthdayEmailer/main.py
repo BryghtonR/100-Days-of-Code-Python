@@ -3,27 +3,25 @@ import datetime
 import os, random
 import smtplib
 
-#--- emailer info ---
+#--- my emailer info ---
 name = "pyTester"
 email = "PyProgramTester@gmail.com"
 password = #needs primary or temp password here!
 
-#---day and month---
+#---get todays date---
 now = datetime.datetime.now()
-todays_month = now.month
-todays_day = now.day
 
-#--- import list of friends ---
-data = pandas.read_csv("birthdays.csv")
-birthdays = data.to_dict()
+#--- import list of friends and convert to dictionary ---
+birthdays = pandas.read_csv("birthdays.csv")
+birthdays = birthdays.to_dict()
 
 #---search for matching birthdays ---
 for each in birthdays["month"]:
-    if birthdays["month"][each] == todays_month and birthdays["day"][each] == todays_day:
+    if birthdays["month"][each] == now.month and birthdays["day"][each] == now.day:
 
         #---import random letter template ---
-        with open("letter_templates/" + random.choice(os.listdir("letter_templates")), "r") as letter_1:
-            letter = letter_1.read()
+        with open("letter_templates/" + random.choice(os.listdir("letter_templates")), "r") as letter:
+            letter = letter.read()
 
         # --- find replace your name and friends name ---
         letter = letter.replace("[NAME]", birthdays["name"][each])

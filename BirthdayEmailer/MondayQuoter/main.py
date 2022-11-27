@@ -1,7 +1,7 @@
 # import smtplib
 
-# email = "PyProgramTester@gmail.com"
-# password = #needs primary or temp password here!
+email = "PyProgramTester@gmail.com"
+password = ""#needs primary or temp password here!
 
 # with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
 #     connection.starttls()
